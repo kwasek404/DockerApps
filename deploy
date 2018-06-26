@@ -15,9 +15,9 @@ mkdir -p /home/docker/$commandName
 docker \
 run --rm \
 -e DISPLAY=\$DISPLAY \
+-e TZ=$(cat /etc/timezone) \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v \$XDG_RUNTIME_DIR/pulse:/run/pulse:ro \
--v /etc/timezone:/etc/timezone:ro \
 -v \$HDIR:/home/docker \
 $commandName
 EOF
