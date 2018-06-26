@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+. ./checkargv
+
+iconPath=$(ls $commandName/icon.*)
+iconName=$(basename -- "$iconPath")
+iconExtension="${iconName#*.}"
+
+cp $iconPath /usr/share/icons/$commandName.$iconExtension
+
+cat <<EOF >/usr/local/bin/$commandName
+#!/bin/bash
+HDIR=/home/docker/$commandName
+mkdir -p /home/docker/$commandName
+docker \
+run --rm \
+-e DISPLAY=\$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+-v \$XDG_RUNTIME_DIR/pulse:/run/pulse:ro \
+-v \$HDIR:/home/docker \
+$commandName
+EOF
+chmod 755 /usr/local/bin/$commandName
+
+cat <<EOF >/usr/share/applications/$commandName.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Name=$commandName
+Exec=$commandName
+Icon=/usr/share/icons/$commandName.$iconExtension
+Type=Application
+Categories=Docker;
+EOF
+#~/.local/share/applications
+#~/.local/share/icons
