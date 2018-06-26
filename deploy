@@ -20,6 +20,7 @@ run --rm \
 -v \$XDG_RUNTIME_DIR/pulse:/run/pulse:ro \
 -v \$HDIR:/home/docker \
 -v /etc/hosts:/etc/hosts:ro \
+-v /dev/shm:/dev/shm \
 --net=host \
 $commandName
 EOF
