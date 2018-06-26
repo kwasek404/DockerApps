@@ -17,6 +17,7 @@ run --rm \
 -e DISPLAY=\$DISPLAY \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v \$XDG_RUNTIME_DIR/pulse:/run/pulse:ro \
+-v /etc/timezone:/etc/timezone:ro \
 -v \$HDIR:/home/docker \
 $commandName
 EOF
@@ -31,5 +32,4 @@ Icon=/usr/share/icons/$commandName.$iconExtension
 Type=Application
 Categories=Docker;
 EOF
-#~/.local/share/applications
-#~/.local/share/icons
+
