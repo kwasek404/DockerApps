@@ -19,6 +19,8 @@ run --rm \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v \$XDG_RUNTIME_DIR/pulse:/run/pulse:ro \
 -v \$HDIR:/home/docker \
+-v /etc/hosts:/etc/hosts:ro \
+--net=host \
 $commandName
 EOF
 chmod 755 /usr/local/bin/$commandName
