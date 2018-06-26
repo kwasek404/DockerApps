@@ -2,6 +2,7 @@ FROM ubuntu:latest
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
+RUN timedatectl set-timezone Europe/Warsaw
 RUN apt-get -y install pulseaudio
 RUN apt-get -y install firefox browser-plugin-freshplayer-pepperflash
 
