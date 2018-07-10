@@ -21,7 +21,7 @@ run --rm \
 -v \$HDIR:/home/docker \
 -v /etc/hosts:/etc/hosts:ro \
 -v /dev/shm:/dev/shm \
---net=host \
+--network=host \
 $commandName
 EOF
 chmod 755 /usr/local/bin/$commandName

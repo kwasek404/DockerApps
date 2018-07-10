@@ -1,15 +1,17 @@
 FROM ubuntu:latest
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get -y update
 RUN apt-get -y upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+RUN apt-get -y install tzdata
 RUN apt-get -y install dbus-x11
 RUN apt-get -y install libcanberra-gtk-module libcanberra-gtk3-module
 RUN apt-get -y install pulseaudio
-RUN apt-get -y install firefox browser-plugin-freshplayer-pepperflash flashplugin-installer
-
 RUN useradd docker
 RUN usermod -a -G audio,video docker
+
+RUN apt-get -y install firefox browser-plugin-freshplayer-pepperflash flashplugin-installer
 
 USER docker
 ENV HOME /home/docker
