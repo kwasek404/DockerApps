@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 . ./checkargv
-docker build -t $1 $1/
+docker build --no-cache -t $1 $1/

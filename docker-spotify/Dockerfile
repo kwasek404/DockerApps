@@ -1,15 +1,4 @@
-FROM ubuntu:latest
-
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install tzdata
-RUN apt-get -y install dbus-x11
-RUN apt-get -y install libcanberra-gtk-module libcanberra-gtk3-module
-RUN apt-get -y install pulseaudio
-RUN useradd docker
-RUN usermod -a -G audio,video docker
+FROM template-ubuntu:latest
 
 RUN apt-get -y install gnupg2 software-properties-common
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410

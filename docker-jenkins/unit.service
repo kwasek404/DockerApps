@@ -1,0 +1,14 @@
+[Unit]
+Wants=docker.service
+
+[Service]
+PermissionsStartOnly=true
+Environment="HDIR=/home/docker/docker-jenkins"
+ExecStartPre=/bin/mkdir -p ${HDIR}
+ExecStartPre=/bin/chown -R docker-containers:docker-containers ${HDIR}
+ExecStart=/bin/bash -c "docker run --rm -e TZ=Europe/Warsaw -v ${HDIR}:/home/docker -v /etc/hosts:/etc/hosts:ro -v /dev/shm:/dev/shm --network=host docker-jenkins"
+User=docker-containers
+Group=docker-containers
+
+[Install]
+WantedBy=default.target

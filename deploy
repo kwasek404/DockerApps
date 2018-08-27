@@ -2,6 +2,12 @@
 set -e
 . ./checkargv
 
+if [ -f $commandName/unit.service ]; then
+	cp -f $commandName/unit.service /etc/systemd/system/$commandName.service
+	systemctl daemon-reload
+	exit 0
+fi
+
 iconPath=$(ls $commandName/icon.*)
 iconName=$(basename -- "$iconPath")
 iconExtension="${iconName#*.}"
