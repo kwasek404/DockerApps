@@ -1,4 +1,6 @@
 node('charger') {
+	echo "Cleaning cache"
+	sh "docker system prune -a -f"
 	def images = ["template-fedora", "template-ubuntu", "docker-darktable", "docker-dbeaver", "docker-firefox", "docker-jenkins", "docker-libreoffice", "docker-spotify", "docker-tor"]
 	for (image in images) {
 		buildImage(image)
@@ -7,4 +9,5 @@ node('charger') {
 
 def buildImage(imageName) {
 	echo "Building ${imageName}"
+	sh "./build ${imageName}"
 }
