@@ -8,6 +8,10 @@ node('charger') {
 }
 
 def buildImage(imageName) {
-	echo "Building ${imageName}"
-	sh "./build ${imageName}"
+	stage(imageName) {
+		steps {
+			echo "Building ${imageName}"
+			sh "./build ${imageName}"
+		}
+	}
 }
