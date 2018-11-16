@@ -11,6 +11,10 @@ fi
 iconPath=$(ls $commandName/icon.*)
 iconName=$(basename -- "$iconPath")
 iconExtension="${iconName#*.}"
+args=""
+if [ -f $commandName/args ]; then
+	args="$(cat $commandName/args)"
+fi
 
 cp $iconPath /usr/share/icons/$commandName.$iconExtension
 
@@ -27,7 +31,7 @@ run --rm \
 -v \$HDIR:/home/docker \
 -v /etc/hosts:/etc/hosts:ro \
 -v /dev/shm:/dev/shm \
---network=host \
+$args \
 $commandName
 EOF
 chmod 755 /usr/local/bin/$commandName

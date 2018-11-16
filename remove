@@ -1,0 +1,7 @@
+#!/bin/bash
+commandName=$1
+if [ -z $commandName ]; then
+	echo "Missing argument"
+	exit 1
+fi
+rm -f /etc/systemd/system/$commandName.service /usr/share/icons/$commandName.* /usr/local/bin/$commandName /usr/share/applications/$commandName.desktop
