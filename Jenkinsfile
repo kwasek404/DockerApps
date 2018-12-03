@@ -1,5 +1,5 @@
 node('charger') {
-	def images = ["template-fedora", "template-ubuntu", "docker-darktable", "docker-dbeaver", "docker-firefox", "docker-jenkins", "docker-spotify", "docker-tor", "docker-chrome", "docker-slack"]
+	def images = ["template-fedora", "template-ubuntu", "docker-darktable", "docker-dbeaver", "docker-firefox", "docker-jenkins", "docker-spotify", "docker-tor", "docker-chrome", "docker-slack", "docker-atom"]
 	stage("Cloning git repo") {
 		echo "Cloning repo"
 		git(url: 'https://github.com/kwasek404/DockerApps.git')
